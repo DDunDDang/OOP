@@ -1,6 +1,8 @@
+package homework_1;
+
 import java.util.Scanner;
 
-public class homework_1 {
+public class Homework_1 {
     public static void main(String[] args) {
         System.out.println("학과, 학번, 이름을 빈칸으로 분리하여 입력하세요.");
         Scanner sc = new Scanner(System.in);
