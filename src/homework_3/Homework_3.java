@@ -46,7 +46,8 @@ public class Homework_3 {
 
             for (Player player : players) {
                 System.out.println(player.getName() + " 차례입니다. 주사위를 던지려면 1을 입력하세요.");
-                if (sc.next().equals("1")) {
+                if (sc.nextInt() == 1) {
+                    sc.nextLine(); // 개행 문자 제거
                     int firstFaceValue = die.roll();
                     int secondFaceValue = die.roll();
                     int sumFaceValue = firstFaceValue + secondFaceValue;
@@ -75,9 +76,11 @@ public class Homework_3 {
             System.out.println(sb);
             System.out.println(" ");
             System.out.println("게임을 계속 하시겠습니까? (y/n): ");
-            if ((sc.nextLine().equalsIgnoreCase("y"))) {
+
+            String continueInput = sc.nextLine();
+            if (continueInput.equals("y") || continueInput.equals("Y")) {
                 gameCount++;
-            } else if ((sc.nextLine().equalsIgnoreCase("n"))) {
+            } else if (continueInput.equals("n") || continueInput.equals("N")) {
                 System.out.println("게임을 종료합니다.");
                 continueGame = false;
             }
@@ -90,7 +93,7 @@ public class Homework_3 {
         System.out.println(" ");
         StringBuffer sb = new StringBuffer();
         for (Player player : players) {
-            sb.append(player.getName() + " " + player.getPoint() + "승   ");
+            sb.append(player.getName()).append(" ").append(player.getPoint()).append("승   ");
         }
         sb.append("하였습니다.");
         System.out.println(sb);
