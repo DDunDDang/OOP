@@ -20,6 +20,12 @@ public class Homework_3 {
         System.out.println("게임 참가자의 수를 입력하세요");
         int playerCount = sc.nextInt();
 
+        if (playerCount < 2 || playerCount > 6) {
+            System.out.println("2명에서 6명까지 참여 가능합니다.");
+            System.out.println("게임을 종료합니다.");
+            System.exit(0);
+        }
+
         Player[] players = new Player[playerCount];
 
         System.out.println("게임 참가자의 이름을 차례로 입력하시오.");
@@ -78,9 +84,9 @@ public class Homework_3 {
             System.out.println("게임을 계속 하시겠습니까? (y/n): ");
 
             String continueInput = sc.nextLine();
-            if (continueInput.equals("y") || continueInput.equals("Y")) {
+            if (continueInput.equalsIgnoreCase("y")) {
                 gameCount++;
-            } else if (continueInput.equals("n") || continueInput.equals("N")) {
+            } else if (continueInput.equalsIgnoreCase("n")) {
                 System.out.println("게임을 종료합니다.");
                 continueGame = false;
             }
