@@ -104,13 +104,13 @@ public class Assignment_5 extends JFrame {
 
             String name = tfName.getText();
 
-            if (checkInserted(name)) {
+            if (name.equals("")) {
+                ta.append("이름을 입력해 주세요.");
+            } else if (checkInserted(name)) {
                 Phone findedPhone = phoneHashMap.get(name);
                 ta.append("이     름 : " + name + "\n");
                 ta.append("전화번호 : " + findedPhone.getPhoneNumber() + "\n");
                 ta.append("주     소 : " + findedPhone.getAddress() + "\n\n");
-            } else if (name.equals("")) {
-                ta.append("이름을 입력해 주세요.");
             } else {
                 ta.append(name + "에 대한 전화번호는 없습니다.");
             }
@@ -124,11 +124,19 @@ public class Assignment_5 extends JFrame {
         public void actionPerformed(ActionEvent e) {
             ta.setText("");
             String name = tfName.getText();
+            String address = tfAddress.getText();
+            String phoneNumber = tfPhoneNumber.getText();
 
-            if (checkInserted(name)) {
+            if (name.equals("")) {
+                ta.append("이름을 입력해 주세요.");
+            } else if (phoneNumber.equals("")) {
+                ta.append("전화번호를 입력해 주세요.");
+            } else if (address.equals("")) {
+                ta.append("주소를 입력해 주세요.");
+            } else if (checkInserted(name)) {
                 ta.setText(name + "에 대한 전화번호는 이미 등록 되었습니다.");
             } else {
-                phoneHashMap.put(name, new Phone(tfAddress.getText(), tfPhoneNumber.getText()));
+                phoneHashMap.put(name, new Phone(address, phoneNumber));
                 ta.setText(name + "의 전화번호가 삽입되었습니다.");
             }
             resetTextField();
@@ -141,11 +149,11 @@ public class Assignment_5 extends JFrame {
             ta.setText("");
             String name = tfName.getText();
 
-            if (checkInserted(name)) {
+            if (name.equals("")) {
+                ta.append("이름을 입력해 주세요.");
+            } else if (checkInserted(name)) {
                 phoneHashMap.remove(name);
                 ta.append(name + "의 전화번호가 삭제되었습니다.");
-            } else if (name.equals("")) {
-                ta.append("이름을 입력해 주세요.");
             } else {
                 ta.append(name + "에 대한 전화번호는 없습니다.");
             }
